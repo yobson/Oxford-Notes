@@ -77,4 +77,3 @@ Definitions
 - A binary relation is transitive iff for all $\langle d,e \rangle$ and $\langle e,f \rangle$ in S, $\langle d,f \rangle \in S$
 - A binary relation is reflexive iff for all $x \in S$, $\langle x,x \rangle \in R$
 - A function is when for $\langle A,B \rangle$, there is no $\langle A,C \rangle$
-

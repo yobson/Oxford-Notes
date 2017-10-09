@@ -1,9 +1,5 @@
 # Introduction to Logic
 
-[TOC]
-
-
-
 ## Lecture 1
 
 You can find the slides, lecture notes, worked examples and much much more [here](http://logicmanual.philosophy.ox.ac.uk). 
@@ -18,30 +14,32 @@ Why logic?
 - It is also compulsory in our course
 
 ### Arguments
-Sentences that can be either true or false are called declarative sentences.
 
-A good argument is where the truth of the premises guarantees the truth of the conclusion.
+First some definitions
 
-An argument is logically (formally) valid iff there is no interpretation under which the premises are all true and the conclusion is false. for example Zeno is a tortoise. All tortoises have no teeth therefore Zeno has no teeth.
+- Sentences that can be either true or false are called declarative sentences.
+- An argument consists of a set of declarative sentances (the premises) and a sentence marked as the conclusion
+
+An argument is logically (formally) valid iff there is no interpretation under which the premises are all true and the conclusion is false. For example Zeno is a tortoise. All tortoises have no teeth therefore Zeno has no teeth.
 
 Features of a logically valid argument
 
 - The truth of a conclusion follows from the truth of the premises independently from what the subject specific expressions mean. In the above example, it doesn't matter what a tortoise is or what teeth are.
-- The truth of a conclusion follows from the truth of the premises purely in virtue of the 'form' of the arguments and independent of the assumptions
-- It's not possible that the premises of a logically valid argument 
+- The truth of a conclusion follows from the truth of the premises purely in virtue of the 'form' of the arguments and independent of the assumptions.
+- It's not possible that the premises of a logically valid argument are true if the conclusion is false and vice versa.
 - An argument can be logically valid without true assumptions. That can be used to disprove a conclusion.
 
 Every EU citizen can enter the US without a visa. Max is from Sweden therefore he can enter the US without a visa. This is not logically valid because it relies on the knowledge that Sweden is in the EU and that max as citizenship.
 
-Consistency - a set of sentences are consistent iff there is an interpretation that makes all he sentences true.
+Consistency - a set of sentences are consistent iff there is at least one interpretation that makes all the sentences true.
 
-Validity - if there is iff it is true under any interpretation.
+Logical truth- A sentence is a logical truth iff it is true under any interpretation.
 
-Contradiction - A sentence is a contradiction iff it is false under any interpretation. For example - 'Some metaphysicians are also ethicists therefore not metaphysicians'
+Contradiction - A sentence is a contradiction iff it is false under any interpretation. For example - 'Some metaphysicians who are also ethicists are not metaphysicians'
 
 ### Sets
 
-A set is simply a collection of objects that we call elements.
+A set is simply a collection of objects that we call elements. (Kinda...)
 
 Sets are identical iff they have the same elements
 
@@ -79,4 +77,4 @@ Definitions
 - A binary relation is transitive iff for all $\langle d,e \rangle$ and $\langle e,f \rangle$ in S, $\langle d,f \rangle \in S$
 - A binary relation is reflexive iff for all $x \in S$, $\langle x,x \rangle \in R$
 - A function is when for $\langle A,B \rangle$, there is no $\langle A,C \rangle$
-- ​
+

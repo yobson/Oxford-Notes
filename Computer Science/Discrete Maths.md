@@ -25,3 +25,5 @@ Course Aims:
 - Practice techniques for computing with discrete structures
 - Learn ways to prove mathematical statement.
 
+You can find the notes [here](https://www.cs.ox.ac.uk/teaching/courses/discretemaths/).
+

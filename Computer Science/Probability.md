@@ -13,13 +13,13 @@ A subset of $\Omega$ is called an event. An event $A \subseteq \Omega$ occurs if
 - Coming up heads: $A = \{H\}$
 - Getting a total of 4: $A = \{ \langle 1,3 \rangle, \langle 2,2 \rangle, \langle 3,1 \rangle \}$
 
-The complement of $A$ is $A^c := \Omega \neg A$ and means "Does not occur".
+The complement of $A$ is $A^c := \Omega \setminus A$ and means "Does not occur".
 
 Some examples
 
 - $A \cup B$ means at least one of A or B occur
 - $A \cap B$ means both A and B occur.
-- $A \neg B$ means  A occurs but B doesn't.
+- $A \setminus B$ means  A occurs but B doesn't.
 
 If $A \cap B = \emptyset$ we say that A and B are _disjoint_ - they cannot both occur.
 

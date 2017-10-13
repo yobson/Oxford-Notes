@@ -120,4 +120,65 @@ func1 func2 7 --This will error becuase func1 has been given a function as an in
 (func1 . func2) 7 -- Much better
 ```
 
-We can also chain function this way. Almost endlessly. We need the brackets because the in we didn't, it would run func2 7 which will return an Int. Then attempt to do a function composition with func1 and an Int
+We can also chain function this way. Almost endlessly. We need the brackets because the in we didn't, it would run func2 7 which will return an Int. Then attempt to do a function composition with func1 and an Int.
+
+## Lecture 2
+
+In this lecture we are going to write a function that converts an integer into a string. We shall call it convert and it will obviously have this type definition:
+
+```haskell
+convert :: Int -> String
+```
+
+If we input '1234', the output should be 'one thousand two hundred and thirty four'.
+
+In order to start, we are going to split the problem into a smaller problem and handle numbers up to 10. This function shall be simply a map:
+$$
+1 \mapsto one \\
+2 \mapsto two \\
+3 \mapsto three \\ ... \\
+9 \mapsto nine
+$$
+Lets write this in haskell:
+
+```haskell
+name :: Int -> String
+name 1 = "one"
+name 2 = "two"
+name 3 = "three"
+...
+name 4 = "four"
+```
+
+But this is not scalable! If we wanted to do this up to 1,000,000, it would take years to write and run very slowly.
+
+We also don't need our name function, in haskell we make `unitStrings`, a list that has zero up to and including 9. We can use the `!!` operator to select an element of the list `unitList !! 9 = "nine"`. Next we need to work out how to do up to 100. We need to be able to split a number into it's component parts. Remember that the input is an integer, that means that `7 / 2 = 3` in our program. To find the remainder, we can use mod. `7 % 2 = 1` where `%` is our mod operator. Lets look at this in haskell.
+
+```haskell
+x = mod 7 3 -- x = 1
+y = div 7 3 -- y = 3
+
+x1 = 7 `mod` 3 -- x = 1
+y1 = 7 `div` 3 -- y = 3
+```
+
+Here I used the _tick_ sign to move a function that takes two inputs and made it take the "thing" before it as the first input.
+
+So lets write out two functions. One that splits up our numbers into two digits, and the other that combines the words.
+
+```haskell
+combine :: (Int, Int) -> String
+combine (t,u)
+	| t == 0			= unitStrings !! u
+	| t == 1			= teenStrings !! u
+	| 2 <= t && u == 0	 = teenStrings !! t
+	| 2 <= t && u /= 0	 = teenStrings !! t ++ "-" ++ unitStrings !! u
+```
+
+We are using guards, it will make the function = to the RHS if the LHS is true. If multiple are true, the first one will be run. If none a true, you can use `otherwise` which just equals true (so put it at the bottom). 
+
+```haskell
+split :: Int -> (Int, Int)
+split n = (n `div` 10, n `mod` 10)
+```
+

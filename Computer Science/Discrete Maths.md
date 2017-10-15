@@ -111,3 +111,62 @@ A \cap B = \{ x | x \in A \ and \ x \in B \}
 $$
 
 The first is called union, the second, intersection.
+
+## Lecture 2
+
+### Algebraic Laws
+
+- Idempotence Laws: $A \cup A = A \ and \ A\cap A = A$
+- Commutativity Laws: $A \cup B = B \cup A \ and \ A \cap B = B \cup A$
+- Associativity Laws: $(A \cup B) \cup C = A \cup (B \cup C) \ and \ (A \cap B) \cap C = A \cap (B \cap c)$
+- Distributivity Laws: $A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \ and \ A \cap (B \cup C) =  (A \cap B) \cup (A \cap C)$
+- Zero and one laws: $A \cap \emptyset = \emptyset \ and \ A \cup \emptyset = A$ 
+
+### Generalised Operations. 
+
+$$
+\bigcup^{n}_{i = 1} A_i = \{x | x \in A_i \text{ for some } i \} \ and \ \bigcap^{n}_{i = 1}A_i = \{ x | x \in A_i \text{ for all } i \}
+$$
+
+- Relative Complement: $A \setminus B = \{ x | x \in A \ and \ x \not \in B \}$
+
+### More Algebraic Laws
+
+- Cancellation Laws: $A \setminus A = \emptyset \ and \ A \setminus \emptyset = A$
+- Involution Law
+- De Morgan's Laws
+- Right-distributivity
+
+
+
+### Proving Non-Equality
+
+To prove that $A \not = B$, we need a counter example.
+
+Claim: The left-distributive law:
+$$
+A \setminus (B \cup C) = (A \setminus B) \cup (A \setminus C)
+$$
+is false.
+$$
+Let \ A = \{ 1 \} \\ Let B = \{1\} \\ Let C = \{\emptyset\} \\
+LHS = \emptyset \\
+RHS = \{1\} \not = LHS
+$$
+
+### Cartesian Product
+
+$A \times B = \{ \langle a,b \rangle | a \in A \ and \ b \in B \}$ - This means that the Cartesian Product is simply every combination of the two set inputs in an ordered pair.
+
+We can generalise it like the set operators:
+$$
+\times_{i = 1}^n A_i = \{ x_i \times x_2 \times x_3 \times... x_n | \ \forall x \in A_i \ \forall  \ i  \}
+$$
+
+### Cardinality
+
+The size of a set is called cardinality. For finite sets, this is just the number of elements in the set. The cardinality is usually written ${|A| \ or \ \#A}$.
+
+### Power sets
+
+$\mathscr{P}(A)$ is the powerset of A which is a set of every possible subset of A. $\mathscr{P}(A) = \{ x | x \subseteq A \}$

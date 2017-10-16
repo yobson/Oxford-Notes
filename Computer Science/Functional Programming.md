@@ -182,3 +182,89 @@ split :: Int -> (Int, Int)
 split n = (n `div` 10, n `mod` 10)
 ```
 
+## Lecture 3 - Types
+
+Haskell is a strongly typed language. This means that if a function takes type A and you give it type B, it will just not work. It is also a statically typed, this means that type checking is done at compile time, not at run time. Haskell has algebraic types, this means that you can specify a type relatively. Example:
+
+```haskell
+Func1 :: Int -> Int -- This works - input is int, so is output
+
+Func2 :: a -> a -- This also works, the input and output is of the same type
+```
+
+### Type Synonyms
+
+A type synonym is a way of giving types another name. I shall show you a in built examples:
+
+```haskell
+type String = [Char]
+```
+
+Data is a way of defining new data types. This is how haskell defines bool:
+
+```haskell
+data Bool = False | True
+```
+
+This means that bool can be either true or false. True and False have no build in behaviour, it is simply text! It doesn't need any predefined behaviour.
+
+```haskell
+data Maybe a = Nothing | Just a
+```
+
+This is a way of writing functions that might have no value. The a is not a value, but another type. Maybe a can either be Nothing (like null) or Just a.
+
+```haskell
+f :: Int -> Maybe Int
+f a
+	| a == 0 = Nothing
+	| otherwise Just a
+```
+
+Either:
+
+```haskell
+data Either a b = Left a | Right b
+f :: Bool -> a -> b -> Either a b -- Example
+f b a b 
+	| a = Left a
+	| otherwise Right b
+	
+f2 :: (a -> c) -> (b -> c) -> Either a b -> c
+f2 a _ (Left  c) = a c
+f2 _ b (Right c) = b c
+```
+
+We call types with 'a's and 'b's instead of 'Int' or 'String' parametric types.
+
+### Defining the properties of parametric typed functions
+
+Say we have a this quicksort function:
+
+```haskell
+quickSortInts :: [Int] -> [Int]
+quickSortInts [] = []
+quickSortInts (x:xs) = quickSortInts less ++ [x] ++ quickSortInts more
+    where less = [n | n <- xs, n <  x]
+          more = [n | n <- xs, x >= x]
+```
+
+We want to open this to any type, but it cannot be any type. It can only be applied to a type that is well ordered. So what we shall do is make a new function that applied a _type constraint_ to parametric types. In this case, we shall say the parametric type must be in the type class `Ord`.
+
+```haskell
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x:xs) = quickSort less ++ [x] ++ quickSort more
+    where less = [n | n <- xs, n <  x]
+          more = [n | n <- xs, x >= x]
+```
+
+So how do we add our types to type classes and define their behaviours? We use instance.
+
+```haskell
+data Pair a b = Pair a b
+
+instance Eq (Pair a b) where
+	Pair x y == Pair q p = x == p && y == p
+```
+

@@ -265,6 +265,87 @@ So how do we add our types to type classes and define their behaviours? We use i
 data Pair a b = Pair a b
 
 instance Eq (Pair a b) where
-	Pair x y == Pair q p = x == p && y == p
+Pair x y == Pair q p = x == p && y == p
 ```
 
+You can do this recursively as well! This is the instance of lists for Eq
+
+```haskell
+instance Eq a => Eq [a] where
+[] == [] = True
+(x:xs) ==
+```
+
+
+
+Something to note. Lets define an ordered pair:
+
+```haskell
+data UPair a = UPair a a
+```
+
+This is a definition of an ordered pair. Look how I haven't got a `b` like in the Pair definition. This is because a is a parametric type and not a value so all I'm saying is my ordered pair has two ordered values that are of the same type.
+
+### Recursive Types
+
+```haskell
+data List a = Nil | Cons a (List a) -- This will work fine. You can use this to make trees!!!
+```
+
+## Lecture 3
+
+### Type Inference
+
+Haskell checks types using type inference. This means that often you dn't need to write the type definition... but do... it's beautiful. Parametric types mean that types can grow. For example:
+
+```haskell
+k =h
+a = b -> e
+e = c -> g
+g = d -> h
+b = d -> j
+j = c -> k
+-- Now for a function
+a = b -> e
+a = (d -> j) -> (c -> g)
+a = (d -> (c -> k)) -> (c -> (d -> h))
+a = (d -> c -> h) -> (c -> d -> h)
+-- This is type of our simple function when we used complex paramaetric types.
+```
+
+### Types of errors in haskell
+
+- Type error - checked at compile time not run time
+- Run time errors (Manually triggered with `error :: String -> a`)
+  - Divide by 0
+  - Uncaught pattern (Don't forget your cheeky otherwise)
+- The obvious syntax errors - compile time also.
+
+### How Haskell Executes some things
+
+```haskell
+sq :: Int -> Int
+sq x = x*x
+```
+
+1. $sq (3+4)$
+2. $sq (7)$
+3. $7 \times 7$
+4. $49$
+
+Or
+
+1. $sq (3 + 4)$
+2. $(3 + 4) \times (3+4)$
+3. $7 \times (3+4)$
+4. $7 \times 7$
+5. $49$
+
+The first way was eager evaluation. It does things as soon as you tell it that it can. The second was normal order evaluation. It took longer because it deferred any calculation until it was forced to do so. But this is more expensive. It is however far more supreme, especially when doing maths. Haskell instead uses lazy evaluation.
+
+1. $sq(3+4)$
+2. $let \ x = 3+4 \ in \ x \times x$
+3. $let \ x = 7 \ in \ x \times x$
+4. $49$
+
+It took just as many steps as the eager evaluation but it deferred calculation until as late as it can but builds up data as interconnected trees. so as soon as one  value is evaluated to a numeric, all identical instances of that value are updated as they are pointers to the same memory address.

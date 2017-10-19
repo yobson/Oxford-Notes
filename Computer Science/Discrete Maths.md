@@ -170,3 +170,51 @@ The size of a set is called cardinality. For finite sets, this is just the numbe
 ### Power sets
 
 $\mathscr{P}(A)$ is the powerset of A which is a set of every possible subset of A. $\mathscr{P}(A) = \{ x | x \subseteq A \}$
+
+## Lecture 2 
+
+### Intervals
+
+An interval s a subset $I$ of $\mathbb{R}$ with the interval property: $x,z \in I$ and $x < y < z \Rightarrow y \in I$
+
+Intervals have a more consice notation:
+
+- $(a,b) = \{ x \in \mathbb{R} \ |\ a < x < b \}$
+- $(a,b] = \{ x \in \mathbb{R} \ | \ a < x \leq b \}$
+- $(a, \infty) = \{ x \in \mathbb{R } \ | \ a < x \}$
+- $(-\infty, b) = \{ x \in \mathbb{R} \ |x < b \}$
+- $[a,b] = \{ x \in \mathbb{R} \ | \ a \leq x \leq b \}$
+- $[a, b) = \{ x \in \mathbb{R} \ | \ a \leq x < b \}$
+- $(a, b] = \{ x \in \mathbb{R} \ | \ a < x \leq b \}$
+
+### Functions
+
+> A function associates elements of one set with another. It consists of:
+>
+> - A set A called the domain
+> - A set B called the codomain
+> - A map which associates exactly one element of B with each element of A
+
+We write $ f : A \to B$ to indicate that $f$ is a function with domain $A$ and codomain $B$, and $f \: a \mapsto b$ or $f(a) = b$ to indicate that f associates with a and b.
+
+Two functions are only the same if the domain and co-domain are the same.
+
+Sometimes we want to place a looser condition on the inputs and outputs. A partial function associates elements of one set with another. It consists of:
+
+- A set A called the domain
+- A set B called the codomain
+- A map which associates exactly zero or one element of B with each element of A
+
+Roughly speaking: a partial function may be "not defined" on some of its inputs. If we want to specify that a function isn't partial, we call it a total function.
+
+### Properties of a Function
+
+Let f be a function $f : A \to B$. The domain is $Dom(f)$, the codomain is $Im(f)= \{b \in B \ | \ B \text{is the codomain}\}$.
+
+### Bijections
+
+A bijection matches up elements of A and B
+
+So if there is a bijection $f: A \to B$ then $|A| = |B|$ This also works the other way round.
+
+A function is onto if for every $b \in B$, there is an element $a \in A$ which is mapped onto it.

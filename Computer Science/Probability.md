@@ -114,5 +114,45 @@ $$
 \Omega = \{1,2,3,4,5,6\} \\ \mathbb{P}(A) = \frac{|A|}{6} \ \forall \ A \\
 Let \ A=\{6\} \\ Let \ B = \{\text{result is even}\} = \{2,4,6\} \\
 So \ \mathbb{P}(B) = \frac{1}{2}, \mathbb{A} = \frac{1}{6}, also \ \mathbb{P}(A \cap B) = \frac{1}{6}. \\
-So \ \mathbb{P}(A | B) = \frac{1/6}{1/2} = \frac{1}{3}.
+So \ \mathbb{P}(A | B) = \frac{1/6}{1/2} = \frac{1}{3}
 $$
+
+
+
+## Lecture 3
+
+### Law of total probability
+
+> A family $\{ B_1, B_2, B_3,... \}$ of events is a partition of $\Omega$. If $\bigcup B_i = \Omega$ and $B_i \cap B_j = \emptyset$.
+
+Theorem: If $\{ B_i : B \in I \} $ is a finite or countabley infinite partition of $\Omega$ with $\mathbb{P}(B_i  > 0)$ for all $i$, then $\mathbb{P}(A) = \sum_{i \in I} \mathbb{P}(A |B_i) \mathbb{P}(B_i)$.
+
+Example (Because what the fuck does that mean)
+
+On a  given evening, Henry either eats dinner in college (with a probability 0.8) or he cooks for himself. In college, he is served pasta with probability 0.15m if he cooks for him self, he makes pasta with a probability of 0.95. What is the probability that he eats pasta tonight.
+
+Solution:
+$$
+Let \ A = \{ \text{H eats pasta} \} \\
+B_1 = \{ \text{H eats in college} \} \\
+B_2 = \{ \text{H cooks} \} \ \  \ \ \ (\{ B_1, B_2 \} \text{ is a partition}) \\ 
+\mathbb{P}(A) = \mathbb{P}(A | B_1)\mathbb{P}(B_1) + \mathbb{P}(A|B_2)\mathbb{B_2}\\
+0.15 \times 0.8 + 0.95 \times 0.2 = 0.31
+$$
+
+### Bayes' Theorem
+
+Suppose $\{ B_1, B_2,... \}$ is a partition of $\Omega$ with $\mathbb{P}(B_i) > 0 \ \forall \ i$. Suppose $\mathbb{P}(A) > 0$. Then 
+$$
+\mathbb{P}(B_k|A) = \frac{\mathbb{P}(A|B_k)\mathbb{P}(B_k)}{\sum_{i \geq 1}\mathbb{P}(A | B_k)\mathbb{P}(B_i)}
+$$
+Simpsons Paradox is when 
+$$
+\mathbb{P}(E | F \cap G) > \mathbb{P}(E|F^c \cap G) \\
+\mathbb{P}(E|F \cap G^c) > \mathbb{P}(E |F^c \cap G^c) \\
+But\\
+\mathbb{P}(E|F) < \mathbb{P}(E|F^C)
+$$
+To understand this paradox, think of E as the probability of being cured, F being the probability of getting cure 1, and G being probability of being in group 1
+
+Let ($\Omega, F, \mathbb{P}$) be a probability space and let $B \in F$ with $\mathbb{P}(B) > 0$. Define $\mathbb{Q} : F \to \mathbb{R}$ by $\mathbb{Q}(A)=\mathbb{P}(A|B)$, then ($\Omega, F, \mathbb{Q}$) is also a probability space. ($Q : F \mapsto \mathbb{P}(F|B)$)

@@ -292,7 +292,7 @@ This is a definition of an ordered pair. Look how I haven't got a `b` like in th
 data List a = Nil | Cons a (List a) -- This will work fine. You can use this to make trees!!!
 ```
 
-## Lecture 3
+## Lecture 4
 
 ### Type Inference
 
@@ -349,3 +349,48 @@ The first way was eager evaluation. It does things as soon as you tell it that i
 4. $49$
 
 It took just as many steps as the eager evaluation but it deferred calculation until as late as it can but builds up data as interconnected trees. so as soon as one  value is evaluated to a numeric, all identical instances of that value are updated as they are pointers to the same memory address.
+
+But sometimes you want eager evaluation. Here is why
+
+| Step | Eager                   | Lazy/Normal Order                        |
+| ---- | ----------------------- | ---------------------------------------- |
+| 1    | $fact(3,1)$             | $fact(3,1)$                              |
+| 2    | $fact(3-1, 3 \times 1)$ | $fact(3 - 1, 3 \times 1)$                |
+| 3    | $fact(2, 3 \times 1)$   | $fact(2, 3 \times 1)$ (forces to be 2 because 0 check) |
+| 4    | $fact(2,3)$             | $fact(2-1, (3\times 1) \times 2)$        |
+| 5    | $fact(2-1, 3 \times 2)$ | $fact(1, (3 \times 1) \times 2)$         |
+| 6    | $fact(1, 3 \times 2)$   | $fact(1-1,((3 \times 1) \times 2)\times 1)$ |
+| 7    | $fact(1, 6)$            | $fact(0 , ((3 \times 1) \times 2) \times 1)$ |
+| 8    | $fact(1-1, 6 \times 1)$ | $(3 \times 2) \times 1$                  |
+| 9    | $fact(0, 6 \times 1)$   | $6 \times 1$                             |
+| 10   | $fact(0, 6) = 6$        | 6                                        |
+
+The two types of evaluation both took 10 steps, but one used a lot more memory as it stored the differed computations in memory before doing them. 
+
+## Lecture 5
+
+First a little fun
+
+```haskell
+not' :: Bool -> Bool
+not' true = False
+not' false = True
+	where true = True
+		  false = False
+```
+
+It doesn't matter if you give it a true or a false, it will return False. This is because true and false are not used for pattern matching, but instead used as variables. Because those variables are never called and because haskell is lazy, the where is never accessed. If you want to use a type, use the type.
+
+### Recursion in lists
+
+Often we use lists recursively. I shall use an example of a quick sort algorithm.
+
+```haskell
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x:xs) = quickSort less ++ [x] ++ quickSort more
+    where less = [n | n <- xs, n <  x]
+          more = [n | n <- xs, x >= x]
+```
+
+This has a pattern match (x:xs). This is where we split the first element of the list (x) and the rest of the list (xs) so we can use them in the recursive function. The function keeps spawning recursive tails until it gets to the empty list ([]).
